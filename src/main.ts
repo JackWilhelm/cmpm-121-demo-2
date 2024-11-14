@@ -17,6 +17,26 @@ canvas.height = 256;
 
 const drawing = canvas.getContext('2d') as CanvasRenderingContext2D;
 
+const instructionsDisplay: HTMLDivElement = document.createElement('div');
+instructionsDisplay.style.border = '1px solid black';
+instructionsDisplay.style.padding = '15px';
+instructionsDisplay.style.width = '300px';
+
+const instructionsList: string[] = ["Welcome to Jack's Great, Amazing Game!", 
+    "Clear - clears the canvas of all current edits", 
+    "Undo - undoes the most recent edit", "Redo - redoes the most recent undos", 
+    "Thin/Thick - change the thickness of the marker tool. Changes the color randomly when either are clicked", 
+    "Custom Sticker - Opens a prompt to add your own sticker to the editing options.", 
+    "Sticker Buttons - Places a sticker onto the canvas. Clicking on the buttons randomly changes the rotation of the sticker.", 
+    "Export - Exports a high quality image to your device."];
+instructionsList.forEach((text) => {
+  const paragraphElement: HTMLParagraphElement = document.createElement('p');
+  paragraphElement.textContent = text;
+  instructionsDisplay.appendChild(paragraphElement);
+});
+
+document.body.append(instructionsDisplay);
+
 const thickLine = 20;
 const thinLine = 2;
 let nextLineWidth = thinLine;
